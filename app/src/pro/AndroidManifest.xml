@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity android:name="info.lofei.flavorsdemo.SayHelloActivity"
+                  android:label="@string/title_activity_say_hello"
+            >
+        </activity>
+    </application>
+
+</manifest>

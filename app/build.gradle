@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "info.lofei.flavorsdemo"
+        minSdkVersion 14
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+
+    productFlavors {
+        free {
+            applicationId "info.lofei.flavorsdemo.free"
+            manifestPlaceholders = [CHANNEL_VALUE : "free"]
+            buildConfigField "boolean", "IS_FREE", "true"
+            buildConfigField "int", "PRO_LEVEL", "-1"
+        }
+
+        pro {
+            applicationId "info.lofei.flavorsdemo.pro"
+            manifestPlaceholders = [CHANNEL_VALUE : "pro"]
+            buildConfigField "boolean", "IS_FREE", "false"
+            buildConfigField "int", "PRO_LEVEL", "1"
+        }
+    }
+
+    buildTypes {
+
+        debug {
+            versionNameSuffix ".dev"
+
+        }
+
+        alphaRelease {
+            debuggable false
+            versionNameSuffix ".alpha"
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.2.1'
+}
